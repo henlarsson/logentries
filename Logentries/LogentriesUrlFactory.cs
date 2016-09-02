@@ -15,18 +15,23 @@
             this.LogSet = logSet;
         }
 
-        public string Url => $"{Api}{this.LogSet.Value}/{this.Log.Value}/";
+        public string Url => $"{Api}{this.LogSet}/{this.Log}/";
     }
 
     public class LogSetModel
     {
         public static LogSetModel LogSetDefault => new LogSetModel("LOGSETNAME");
 
-        public readonly string Value;
+        private readonly string value;
 
         private LogSetModel(string log)
         {
-            this.Value = log;
+            this.value = log;
+        }
+
+        public override string ToString()
+        {
+            return this.value;
         }
     }
 
@@ -36,11 +41,16 @@
 
         public static LogModel LogOtherExample => new LogModel("LOGNAME2");
 
-        public readonly string Value;
+        private readonly string value;
 
         private LogModel(string log)
         {
-            this.Value = log;
+            this.value = log;
+        }
+
+        public override string ToString()
+        {
+            return this.value;
         }
     }
 }
